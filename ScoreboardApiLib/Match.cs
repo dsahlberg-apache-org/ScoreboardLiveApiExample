@@ -55,6 +55,12 @@ namespace ScoreboardLiveApi {
     [JsonPropertyName("starttime")]
     public string JsonStartTime { get; set; }
 
+    [JsonPropertyName("umpire")]
+    public string Umpire { get; set; }
+
+    [JsonPropertyName("servicejudge")]
+    public string Servicejudge { get; set; }
+
     [JsonIgnore]
     public DateTime StartTime {
       get {
@@ -75,9 +81,10 @@ namespace ScoreboardLiveApi {
 
     public override string ToString() {
       StringBuilder sb = new StringBuilder();
-      sb.AppendFormat("{0} {1} {2}{3}",
+      sb.AppendFormat("{0} {1}-{2} {3}{4}",
         categoriesDescription[this.Category],
         TournamentMatchNumber > 0 ? string.Format("({0})", TournamentMatchNumber) : "",
+        MatchID > 0 ? string.Format("({0})", MatchID) : "",
         string.IsNullOrEmpty(JsonStartTime) ? "" : JsonStartTime,
         Environment.NewLine
       );
@@ -87,6 +94,14 @@ namespace ScoreboardLiveApi {
       if (Category.EndsWith("d")) {
         sb.AppendFormat("{0, -20}    {1, -20}{2}", Team1Player2Name, Team2Player2Name, Environment.NewLine);
         sb.AppendFormat("{0, -20}    {1, -20}{2}", Team1Player2Team, Team2Player2Team, Environment.NewLine);
+      }
+      if (Umpire != "") {
+        sb.AppendFormat("Umpire: {0, -20}", Umpire);
+        if (Servicejudge != "") {
+          sb.AppendFormat(" Service judge: {0, -20}{1}", Servicejudge, Environment.NewLine);
+        } else {
+          sb.AppendFormat("{0}", Environment.NewLine);
+        }
       }
       return sb.ToString();
     }

@@ -129,7 +129,9 @@ namespace ScoreboardLiveApi {
         { "team2player1name", match.Team2Player1Name },
         { "team2player1team", match.Team2Player1Team },
         { "team2player2name", match.Team2Player2Name },
-        { "team2player2team", match.Team2Player2Team }
+        { "team2player2team", match.Team2Player2Team },
+        { "umpire", match.Umpire },
+        { "servicejudge", match.Servicejudge }
       };
       if (tournament != null) {
         formData.Add("tournamentid", tournament.TournamentID.ToString());
