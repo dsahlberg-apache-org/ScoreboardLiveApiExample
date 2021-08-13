@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TPConnector": {
+      "commandName": "Project",
+      "commandLineArgs": "-v"
+    }
+  }
+}
