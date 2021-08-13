@@ -216,6 +216,11 @@ namespace ScoreboardLiveTPConnector
             try
             {
                 courts.AddRange(await api.GetCourts(device));
+                foreach(Court c in courts)
+                {
+                    Console.Write(c.Name + " ");
+                }
+                Console.WriteLine("");
             }
             catch (Exception e)
             {
@@ -611,14 +616,14 @@ namespace ScoreboardLiveTPConnector
                     try
                     {
                         Console.Write("Waiting for a connection... ");
-                        if (o.Verbose)
-                        {
-                            Console.Clear();
-                        }
 
                         // Perform a blocking call to accept requests.
                         // You could also user server.AcceptSocket() here.
                         TcpClient client = server.AcceptTcpClient();
+                        if (o.Verbose)
+                        {
+                            Console.Clear();
+                        }
                         Console.WriteLine("Connected!");
 
                         // Get a stream object for reading and writing
