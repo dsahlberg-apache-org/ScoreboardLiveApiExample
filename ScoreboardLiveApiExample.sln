@@ -1,28 +1,62 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreboardLiveApiExample", "ScoreboardLiveApiExample\ScoreboardLiveApiExample.csproj", "{5812A54A-1ED7-4975-9030-1AACA928DEA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreboardLiveApi", "ScoreboardApiLib\ScoreboardLiveApi.csproj", "{3E838BE3-FD18-4791-9E08-EE220B01DDC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScoreboardLiveApi", "ScoreboardApiLib\ScoreboardLiveApi.csproj", "{3E838BE3-FD18-4791-9E08-EE220B01DDC2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPConnector", "TPConnector\TPConnector.csproj", "{A65E13F4-D42C-458A-9D70-0429E94B4927}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		DebugProddatabase|Any CPU = DebugProddatabase|Any CPU
+		DebugProddatabase|x86 = DebugProddatabase|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Debug|x86.ActiveCfg = Debug|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Debug|x86.Build.0 = Debug|x86
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugProddatabase|Any CPU.ActiveCfg = Release|x86
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugProddatabase|Any CPU.Build.0 = Release|x86
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugProddatabase|x86.ActiveCfg = Debug|x86
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugProddatabase|x86.Build.0 = Debug|x86
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Release|Any CPU.ActiveCfg = Release|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Release|x86.ActiveCfg = Release|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Release|x86.Build.0 = Release|x86
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Debug|x86.Build.0 = Debug|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugProddatabase|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugProddatabase|Any CPU.Build.0 = Debug|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugProddatabase|x86.ActiveCfg = Debug|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugProddatabase|x86.Build.0 = Debug|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Release|x86.ActiveCfg = Release|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Release|x86.Build.0 = Release|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Debug|x86.Build.0 = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugProddatabase|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugProddatabase|Any CPU.Build.0 = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugProddatabase|x86.ActiveCfg = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugProddatabase|x86.Build.0 = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Release|x86.ActiveCfg = Release|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		Policies = $0
-		$0.DotNetNamingPolicy = $1
-		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92BC4EE7-8302-47B1-B7F7-D54664730063}
 	EndGlobalSection
 EndGlobal
