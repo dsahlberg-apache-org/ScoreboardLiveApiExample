@@ -932,12 +932,12 @@ namespace ScoreboardLiveTPConnector
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine(e.Message);
+                                Console.WriteLine("Fel vid avläsning av match på bana: " + e.Message);
                             }
                         }
                         if (o.Verbose)
                         {
-                            Console.WriteLine(matches.Count());
+                            Console.WriteLine("Hanterade {0} matcher", matches.Count());
                         }
                         HashSet<string> ToDelete = new HashSet<string>();
                         foreach (string key in matches.Keys)
@@ -971,7 +971,7 @@ namespace ScoreboardLiveTPConnector
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message);
+                        Console.WriteLine("Fel vid hantering av meddelande från TP: " + e.Message);
                     }
                 }
             }
