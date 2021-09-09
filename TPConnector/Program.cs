@@ -741,9 +741,13 @@ namespace ScoreboardLiveTPConnector
                                         // Get event
                                         XmlNode eventNode = doc.SelectSingleNode(eventKey);
                                         string category = eventNode.Attributes.GetNamedItem("NAME").InnerText.Trim().ToLower();
-                                        int space = category.IndexOf(" ");
-                                        // Handle if categories have space in them, for examle "HS U11": We only care about the first part.
+                                        // Handle if categories have space or dash in them, for examle "HS U11" or "MS-U19": We only care about the first part.
                                         // We also need to consider the length of the category: it could also be "Herrsingel U11"
+                                        int space = category.IndexOf(" ");
+                                        if (space < 0)
+                                        {
+                                            space = category.IndexOf("-");
+                                        }
                                         if (space > 0)
                                         {
                                             sbMatch.Category = TranslateCategories(category.Substring(0, space), DoTranslateCategories);
@@ -849,6 +853,10 @@ namespace ScoreboardLiveTPConnector
                                         else
                                         {
                                             sbMatch.StartTime = DateTime.Now;
+                                        }
+                                        if (o.Verbose)
+                                        {
+                                            Console.WriteLine("Start time {0}.", sbMatch.StartTime);
                                         }
 
                                         // Get entries and player names
