@@ -2,7 +2,7 @@
   "profiles": {
     "TPConnector": {
       "commandName": "Project",
-      "commandLineArgs": "-v -u http://www.scoreboardlive.fi"
+      "commandLineArgs": "-v -u https://www.scoreboardlive.fi"
     }
   }
 }
