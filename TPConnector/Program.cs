@@ -211,19 +211,20 @@ namespace ScoreboardLiveTPConnector
         {
             // Get courts from server
             Console.Clear();
-            Console.WriteLine("Fetching all available courts from server...");
+            Console.Write("Fetching all available courts from server...");
             List<Court> courts = new List<Court>();
             try
             {
                 courts.AddRange(await api.GetCourts(device));
                 foreach(Court c in courts)
                 {
-                    Console.Write(c.Name + " ");
+                    Console.Write(" " + c.Name);
                 }
                 Console.WriteLine("");
             }
             catch (Exception e)
             {
+                Console.WriteLine("");
                 Console.WriteLine(e.Message);
                 return null;
             }
@@ -747,6 +748,13 @@ namespace ScoreboardLiveTPConnector
                                         if (space < 0)
                                         {
                                             space = category.IndexOf("-");
+                                        }
+                                        if (space < 0)
+                                        {
+                                            //HSU17 eller HSV35
+                                            if (category.Length > 2 && (category.Substring(2, 1) == "u" || category.Substring(2, 1) == "v")) {
+                                                space = 2;
+                                            }
                                         }
                                         if (space > 0)
                                         {
