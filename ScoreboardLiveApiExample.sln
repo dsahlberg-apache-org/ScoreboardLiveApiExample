@@ -12,6 +12,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		DebugFI|Any CPU = DebugFI|Any CPU
+		DebugFI|x86 = DebugFI|x86
 		DebugProddatabase|Any CPU = DebugProddatabase|Any CPU
 		DebugProddatabase|x86 = DebugProddatabase|x86
 		Release|Any CPU = Release|Any CPU
@@ -21,6 +23,9 @@ Global
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Debug|x86.ActiveCfg = Debug|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.Debug|x86.Build.0 = Debug|x86
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugFI|Any CPU.ActiveCfg = DebugFI|x86
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugFI|x86.ActiveCfg = DebugFI|x86
+		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugFI|x86.Build.0 = DebugFI|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugProddatabase|Any CPU.ActiveCfg = Release|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugProddatabase|Any CPU.Build.0 = Release|x86
 		{5812A54A-1ED7-4975-9030-1AACA928DEA5}.DebugProddatabase|x86.ActiveCfg = Debug|x86
@@ -32,6 +37,10 @@ Global
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.Debug|x86.Build.0 = Debug|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugFI|Any CPU.ActiveCfg = DebugFI|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugFI|Any CPU.Build.0 = DebugFI|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugFI|x86.ActiveCfg = DebugFI|Any CPU
+		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugFI|x86.Build.0 = DebugFI|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugProddatabase|Any CPU.ActiveCfg = Debug|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugProddatabase|Any CPU.Build.0 = Debug|Any CPU
 		{3E838BE3-FD18-4791-9E08-EE220B01DDC2}.DebugProddatabase|x86.ActiveCfg = Debug|Any CPU
@@ -44,6 +53,10 @@ Global
 		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{A65E13F4-D42C-458A-9D70-0429E94B4927}.Debug|x86.Build.0 = Debug|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugFI|Any CPU.ActiveCfg = DebugFI|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugFI|Any CPU.Build.0 = DebugFI|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugFI|x86.ActiveCfg = DebugFI|Any CPU
+		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugFI|x86.Build.0 = DebugFI|Any CPU
 		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugProddatabase|Any CPU.ActiveCfg = Debug|Any CPU
 		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugProddatabase|Any CPU.Build.0 = Debug|Any CPU
 		{A65E13F4-D42C-458A-9D70-0429E94B4927}.DebugProddatabase|x86.ActiveCfg = Debug|Any CPU
