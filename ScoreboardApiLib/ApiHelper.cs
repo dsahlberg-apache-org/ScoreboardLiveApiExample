@@ -24,12 +24,14 @@ namespace ScoreboardLiveApi {
     /// Initializes a new instance of the <see cref="T:ScoreboardLiveApi.Api.ApiHelper"/> class.
     /// </summary>
     /// <param name="baseUrl">Base URL for the Scoreboard Live server.</param>
-    public ApiHelper(string baseUrl) {
+    public ApiHelper(string baseUrl, int requestTimeout = 30) {
       BaseUrl = baseUrl;
       // Set the default headers to be used for all requests
       m_client.DefaultRequestHeaders.Accept.Clear();
       m_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
       m_client.DefaultRequestHeaders.Add("User-Agent", "Scoreboard Live API Tester");
+      // Set timeout
+      m_client.Timeout = TimeSpan.FromSeconds(requestTimeout);
     }
 
     /// <summary>
@@ -139,6 +141,36 @@ namespace ScoreboardLiveApi {
       Match.MatchResponse matchResponse = await SendRequest<Match.MatchResponse>("api/match/create_match", device, formData);
       return matchResponse.Match;
     }
+    
+    /// <summary>
+    /// Update an existing match on the server
+    /// </summary>
+    /// <param name="device">Device with server credentials</param>
+    /// <param name="match">Match to update.</param>
+    /// <returns></returns>
+    public async Task<Match> UpdateMatch(Device device, Match match) {
+      // Create POST-data
+      Dictionary<string, string> formData = new Dictionary<string, string> {
+        { "matchid", match.MatchID.ToString() },
+        { "sequencenumber", match.TournamentMatchNumber.ToString() },
+        { "starttime", match.StartTime.ToString("yyyy-MM-dd HH:mm") }
+      };
+      // Update match
+      Match.MatchResponse matchResponse = await SendRequest<Match.MatchResponse>("api/match/update_match", device, formData);
+      // Assing players
+      for (int i = 0; i <= 3; i += match.Category.ToLower().EndsWith("s") ? 2 : 1) {
+        (string name, string team) = match.GetPlayerAtIndex(i);
+        Dictionary<string, string> playerData = new Dictionary<string, string> {
+          { "matchid", match.MatchID.ToString() },
+          { "playerIndex", i.ToString() },
+          { "name", name },
+          { "team", team }
+        };
+        string attachAction = string.IsNullOrEmpty(name) ? "detach_player" : "attach_player";
+        matchResponse = await SendRequest<Match.MatchResponse>("api/player/" + attachAction, device, playerData);
+      }
+      return matchResponse.Match;
+    }
 
     /// <summary>
     /// Get a list of all courts available for a device.
@@ -171,6 +203,22 @@ namespace ScoreboardLiveApi {
     }
 
     /// <summary>
+    /// Clear a court from any assigned match.
+    /// </summary>
+    /// <returns></returns>
+    /// <param name="device">Device credentials</param>
+    /// <param name="court">Court to clear</param>
+    public async Task ClearCourt(Device device, Court court)
+    {
+      // Create the post data.
+      Dictionary<string, string> formData = new Dictionary<string, string> {
+        { "courtid", court.CourtID.ToString() },
+        { "matchid", "0" }
+      };
+      ScoreboardResponse response = await SendRequest<ScoreboardResponse>("api/court/assign_match", device, formData);
+    }
+
+    /// <summary>
     /// Find match by sequence number.
     /// </summary>
     /// <returns></returns>
@@ -185,6 +233,43 @@ namespace ScoreboardLiveApi {
       };
       Match.MatchesResponse response = await SendRequest<Match.MatchesResponse>("api/match/get_matches", device, formData);
       return response.Matches;
+    }
+
+    /// <summary>
+    /// Get all matches for a specific tournament class
+    /// </summary>
+    /// <param name="device">Device credentials</param>
+    /// <param name="classId">ID of class to find matches for</param>
+    /// <returns></returns>
+    public async Task<List<Match>> FindMatchesByClass(Device device, int classId) {
+      // Create the post data.
+      Dictionary<string, string> formData = new Dictionary<string, string> {
+        { "classid", classId.ToString() }
+      };
+      Match.MatchesResponse response = await SendRequest<Match.MatchesResponse>("api/match/get_matches", device, formData);
+      return response.Matches;
+    }
+
+    /// <summary>
+    /// Create a tournament class on the server
+    /// </summary>
+    /// <param name="device">Device credentials</param>
+    /// <param name="tournament">Tournament to add class to</param>
+    /// <param name="tournamentClass">Class to add</param>
+    public async Task<TournamentClass> CreateTournamentClass(Device device, Tournament tournament, TournamentClass tournamentClass) {
+      // Create post data
+      Dictionary<string, string> formData = new Dictionary<string, string> {
+        { "description", tournamentClass.Description },
+        { "tournamentid", tournament.TournamentID.ToString() },
+        { "size", tournamentClass.Size.ToString() },
+        { "classtype", tournamentClass.ClassType },
+        { "category", tournamentClass.Category }
+      };
+      if (tournamentClass.ParentClassID > 0) {
+        formData.Add("parentclass", tournamentClass.ParentClassID.ToString());
+      }
+      TournamentClass.TournamentClassResponse response = await SendRequest<TournamentClass.TournamentClassResponse>("api/tournament/add_class", device, formData);
+      return response.TournamentClass;
     }
 
     /// <summary>
