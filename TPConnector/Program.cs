@@ -33,7 +33,7 @@ namespace ScoreboardLiveTPConnector
         public string IP { get; set; } = "";
         [Option('u', "url", Required = false, HelpText = "URL to ScoreboardLive.")]
         public string URL { get; set; } = "https://www.scoreboardlive.se";
-        //Utvecklingsmiljö: https://tokig.ddns.net/sbdev/
+        //Utvecklingsmiljö: https://dosan.scoreboardlive.se
     }
 
     class lMatch
@@ -701,6 +701,22 @@ namespace ScoreboardLiveTPConnector
                         XmlDocument doc = new XmlDocument();
                         doc.PreserveWhitespace = true;
                         doc.LoadXml(output);
+						bool isCP = false;
+						switch (doc.Attributes.GetNamedItem("Product"))
+						{
+							case "CP":
+								isCP = true;
+								break;
+								
+							case "TP":
+								isCP = false;
+								break;
+								
+							default:
+								Console.WriteLine("Okänd applikation: " + doc.Attributes.GetNamedItem("Product"));
+								continue;
+						}
+						
                         XmlNodeList onCourtMatches = doc.SelectNodes("/" + doc.DocumentElement.LocalName + "/MATCHES/ONCOURT/MATCH");
                         foreach (XmlNode courtMatch in onCourtMatches)
                         {
@@ -708,12 +724,15 @@ namespace ScoreboardLiveTPConnector
                             {
                                 string eventKey = "/" + doc.DocumentElement.LocalName + "/EVENTS/EVENT[@ID=" + courtMatch.Attributes.GetNamedItem("EID").InnerText + "]";
 
+if (isCP)
+	//Loopa <SUBMATCHES> och sätt courtMatch = <SUBMATCH>
                                 int TournamentMatchNumber = int.Parse(courtMatch.Attributes.GetNamedItem("ID").InnerText);
                                 if (o.Verbose)
                                 {
                                     Console.WriteLine("ID: " + TournamentMatchNumber + " EID: " + courtMatch.Attributes.GetNamedItem("EID").InnerText);
                                 }
 
+					
                                 // Get court
                                 string CourtName = courtMatch.Attributes.GetNamedItem("CT").InnerText;
 
@@ -765,6 +784,8 @@ namespace ScoreboardLiveTPConnector
                                             sbMatch.Category = TranslateCategories(category, DoTranslateCategories);
                                         }
 
+if (isCP) 
+	DRAWS/DRAW[id??]/MATCHES/MATCH/SUBMATCH
                                         // Get match
                                         if (o.Verbose)
                                         {
